@@ -1,0 +1,72 @@
+.image-card
+  margin-top 40px
+  box-shadow 0 2px 12px 0 rgba(0, 0, 0, 0.1)
+  .article
+    margin-bottom 20px
+    padding 20px
+  .article-cover
+    position relative
+    display flex
+    justify-content center
+    align-items center
+    .article-title
+      position absolute
+      color white
+      font-size 24px
+      font-weight bold
+      padding 10px
+      span
+        hover-underline-animation(0, 0, 2px, white, 0, 0, 0, 0)
+        &:hover
+          hover-underline-animation(0, 0, 2px, white, 0, 0, 0, 100%)
+    img
+      max-height 600px
+      width 100%
+      filter brightness(0.7)
+  .article-info
+    display flex
+    align-items center
+    justify-content center
+    font-size 14px
+    margin 20px 0
+    color $color-mid-grey
+    @media (max-width: 768px)
+      font-size 12px
+    .article-category
+      cursor pointer
+      border-bottom 1px solid $color-main
+    span
+      margin-right 10px
+  .article-dec
+    font-size 16px
+    color $color-mid-grey
+    border-left 2px solid $color-mid-grey
+    padding-left 5px
+  .acticle-tags
+    display flex
+    flex-wrap wrap
+    padding 20px 0 10px
+    margin-bottom 10px
+    border-bottom 1px solid $color-line
+    .tag
+      font-size 12px
+      padding 5px 10px
+      margin-right 5px
+      border-radius 25px 5px
+      color white
+      background-color $color-main
+      transition all 0.3s
+      cursor pointer
+      &:hover
+        background-color rgba($color-main, 0.8)
+  >>>.iconfont
+    font-size 12px
+    margin-right 4px
+  .acticle-read
+    hover-underline-animation(0, 100%)
+    font-size 14px
+    margin-top 20px
+    cursor pointer
+  >>>.el-card__body
+    @media (max-width: 768px)
+      padding 20px 10px

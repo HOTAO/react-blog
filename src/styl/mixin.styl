@@ -1,0 +1,22 @@
+hover-underline-animation($topWidth = 0, $bottomWidth = 100%, $height = 1px, $bgColor = #262a30, $top = 0, $bottom = 0, $hoverTopWidth = 0, $hoverBottomWidth = 0)
+  position relative
+  &:before, &:after
+    position absolute
+    left 0
+    right 0
+    margin auto
+    content ''
+    height $height
+    background-color $bgColor
+    transition all 0.3s
+  &:before
+    top $top
+    width $topWidth
+  &:after
+    bottom $bottom
+    width $bottomWidth
+  &:hover
+    &:before
+      width $hoverTopWidth
+    &:after
+      width $hoverBottomWidth
