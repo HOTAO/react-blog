@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { Layout } from 'antd'
-// import Clock from './componse/Clock'
-// import MyButton from './componse/MyButton'
-import FrontHeader from './componse/Layout/FrontHeader'
+// import Clock from './components/Clock'
+// import MyButton from './components/MyButton'
+import FrontHeader from './components/Layout/Header/FrontHeader'
+import FrontFooter from './components/Layout/Footer/FrontFooter'
 import './styl/main.styl'
 
 import { Provider } from 'react-redux'
@@ -24,7 +25,9 @@ export default class App extends Component {
             <Content>
               <Routes></Routes>
             </Content>
-            <Footer>Footer</Footer>
+            <Footer>
+              <FrontFooter></FrontFooter>
+            </Footer>
           </Layout>
           {/* <Header></Header>
         <Clock></Clock>

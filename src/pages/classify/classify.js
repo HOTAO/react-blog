@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Tag from '../../componse/Tag/Tag';
+import Tag from './components/Tag/Tag';
+import Category from './components/Category/Category';
 import api from '../../api';
 import './classify.styl'
 export default class Classify extends Component {
@@ -29,12 +30,20 @@ export default class Classify extends Component {
   }
   render () {
     return (
-      <div className="container">
+      <div className="classify container">
         <div className="title">分类</div>
         <div className="tags">
           {
-            this.state.tags.map(cate => (
-              <Tag key={cate.id} id={cate.id} count={cate.article_count} name={cate.name} />
+            this.state.tags.map(tag => (
+              <Tag key={tag.id} id={tag.id} count={tag.article_count} name={tag.name} />
+            ))
+          }
+        </div>
+        <div className="title">标签</div>
+        <div className="categorys">
+          {
+            this.state.categorys.map(cate => (
+              <Category key={cate.id} name={cate.name}></Category>
             ))
           }
         </div>

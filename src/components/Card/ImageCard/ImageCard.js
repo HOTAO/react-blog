@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+import Tips from '../../Tips/Tips'
 import './ImageCard.styl'
 export default function ImageCard (props) {
   return (
@@ -6,28 +8,21 @@ export default function ImageCard (props) {
       <div className="article">
         <div className="article-cover">
           <img src={props.article.cover} alt="" />
-          <div className="article-title">
+          <Link to={`articleDetail/${props.article.id}`} className="article-title">
             <span>{props.article.title}</span>
-          </div>
+          </Link>
         </div>
-        <div className="article-info">
-          <i className="iconfont icon-calendar"></i>
-          <span>发表于 {props.article.createTime}</span>
-          <i className="iconfont icon-folder"></i>
-          <span className="article-category" >{props.article.categoryName}</span>
-          <i className="iconfont icon-eye"></i>
-          <span>{props.article.pageview}次围观</span>
-        </div>
+        <Tips createTime={props.article.createTime} category_id={props.article.category_id} categoryName={props.article.categoryName} pageview={props.article.pageview}></Tips>
         <div className="article-dec">
           {props.article.dec}
         </div>
         <div className="acticle-tags">
           {
             props.tags.map(tag => (
-              <div key={tag.tag_id} className="tag">
+              <Link to={`articleList?type=category&id=${tag.tag_id}`} key={tag.tag_id} className="tag">
                 <i className="iconfont icon-tag"></i>
                 <span>{tag.tag_name}</span>
-              </div>
+              </Link>
             ))
           }
         </div>

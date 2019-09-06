@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import ImageCard from '../../componse/Card/ImageCard'
+import ImageCard from '../../components/Card/ImageCard/ImageCard'
 import { getArticleData } from '../../store/Reducer/home'
 @connect(state => ({ articleData: state.home.articleData }), { getArticleData })
 class Home extends Component {
@@ -15,7 +15,7 @@ class Home extends Component {
     }
   }
   UNSAFE_componentWillMount () {
-    this.props.getArticleData()
+    this.props.getArticleData(this.state.params)
   }
   render () {
     return (
