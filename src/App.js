@@ -4,6 +4,7 @@ import { Layout } from 'antd'
 // import MyButton from './components/MyButton'
 import FrontHeader from './components/Layout/Header/FrontHeader'
 import FrontFooter from './components/Layout/Footer/FrontFooter'
+import RightNav from './components/RightNav'
 import './styl/main.styl'
 
 import { Provider } from 'react-redux'
@@ -24,6 +25,9 @@ export default class App extends Component {
             </Header>
             <Content>
               <Routes></Routes>
+              <RightNav ></RightNav>
+              {/* { */}
+              {/* } */}
             </Content>
             <Footer>
               <FrontFooter></FrontFooter>

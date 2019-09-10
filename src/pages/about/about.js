@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Md2Html from '../../components/Md2Html/Md2Html'
+import Comments from '../../components/Comments/Comments'
 import api from '../../api'
 import './about.styl'
 export default class About extends Component {
@@ -25,6 +26,7 @@ export default class About extends Component {
           <h1>关于我</h1>
         </div>
         <Md2Html html={this.state.meInfo.html}></Md2Html>
+        <Comments article_id={1}></Comments>
       </div>
     )
   }

@@ -1,0 +1,51 @@
+.siet-info-box
+  padding 0 20px
+  max-height calc(100vh - 150px)
+  overflow-y auto
+  margin-top 20px
+  transition all 0.3s
+  img
+    width 100px
+    height @width
+    border-radius 50%
+  .siet-info
+    p
+      margin 20px 0
+    .name
+      font-size 18px
+      font-weight bold
+      color white
+  .siet-menu
+    display flex
+    justify-content center
+    .menu-item
+      padding 0 10px
+      font-weight bold
+      color $color-light-grey
+      cursor pointer
+      &:hover
+        color white
+      &:not(:last-child)
+        border-right 1px solid #555
+      .num
+        font-size 20px
+        margin-bottom 5px
+  .github
+    display flex
+    justify-content center
+    align-items center
+    width 78px
+    height 32px
+    margin 20px auto
+    border 1px solid $color-orange
+    border-radius 5px
+    font-size 14px
+    color $color-orange
+    transition all 0.3s
+    cursor pointer
+    &:hover
+      color white
+      background-color $color-orange
+    .iconfont
+      font-size 14px
+      margin-right 4px

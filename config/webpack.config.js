@@ -49,6 +49,8 @@ const cssRegex = /\.css$/;
 const cssModuleRegex = /\.module\.css$/;
 const sassRegex = /\.(scss|sass)$/;
 const sassModuleRegex = /\.module\.(scss|sass)$/;
+const stylRegex = /\.styl$/;
+const stylModuleRegex = /\.module\.styl$/;
 
 // This is the production and development configuration.
 // It is focused on developer experience, fast rebuilds, and a minimal bundle.
@@ -472,11 +474,18 @@ module.exports = function (webpackEnv) {
                 'sass-loader'
               ),
             },
+            // styl配置
             {
-              test: /\.styl$/,
+              test: stylRegex,
+              exclude: stylModuleRegex,
               use: [
                 require.resolve('style-loader'),
-                require.resolve('css-loader'),
+                {
+                  loader: 'css-loader',
+                  options: {
+                    sourceMap: isEnvProduction && shouldUseSourceMap,
+                  }
+                },
                 require.resolve('stylus-loader'),
                 {
                   loader: 'vue-stylus-resources-loader',
@@ -490,18 +499,31 @@ module.exports = function (webpackEnv) {
                 }
               ]
             },
-            // {
-            //   test: /\.styl$/,
-            //   use: getStyleLoaders(
-            //     {
-            //       importLoaders: 2,
-            //       sourceMap: isEnvProduction && shouldUseSourceMap,
-            //       modules: true,
-            //       getLocalIdent: getCSSModuleLocalIdent,
-            //     },
-            //     'stylus-loader'
-            //   ),
-            // },
+            // module.styl配置
+            {
+              test: stylModuleRegex,
+              use: [
+                require.resolve('style-loader'),
+                {
+                  loader: 'css-loader',
+                  options: {
+                    sourceMap: isEnvProduction && shouldUseSourceMap,
+                    modules: true,
+                  }
+                },
+                require.resolve('stylus-loader'),
+                {
+                  loader: 'vue-stylus-resources-loader',
+                  options: {
+                    resources: [
+                      // resolve方法第二个参数为scss配置文件地址，如果有多个，就进行依次添加即可
+                      path.resolve(__dirname, '../src/styl/color.styl'),
+                      path.resolve(__dirname, '../src/styl/mixin.styl'),
+                    ],
+                  }
+                }
+              ]
+            },
             // "file" loader makes sure those assets get served by WebpackDevServer.
             // When you `import` an asset, you get its (virtual) filename.
             // In production, they would get copied to the `build` folder.
@@ -524,6 +546,7 @@ module.exports = function (webpackEnv) {
         },
       ],
     },
+
     plugins: [
       // Generates an `index.html` file with the <script> injected.
       new HtmlWebpackPlugin(

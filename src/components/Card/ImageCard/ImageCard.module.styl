@@ -1,15 +1,15 @@
-.image-card
+.imageCard
   margin-top 40px
   box-shadow 0 2px 12px 0 rgba(0, 0, 0, 0.1)
   .article
     margin-bottom 20px
     padding 20px
-  .article-cover
+  .articleCover
     position relative
     display flex
     justify-content center
     align-items center
-    .article-title
+    .articleTitle
       position absolute
       color white
       font-size 24px
@@ -23,7 +23,7 @@
       max-height 600px
       width 100%
       filter brightness(0.7)
-  .article-info
+  .articleInfo
     display flex
     align-items center
     justify-content center
@@ -32,17 +32,17 @@
     color $color-mid-grey
     @media (max-width: 768px)
       font-size 12px
-    .article-category
+    .articleCategory
       cursor pointer
       border-bottom 1px solid $color-main
     span
       margin-right 10px
-  .article-dec
+  .articleDec
     font-size 16px
     color $color-mid-grey
     border-left 2px solid $color-mid-grey
     padding-left 5px
-  .acticle-tags
+  .acticleTags
     display flex
     flex-wrap wrap
     padding 20px 0 10px
@@ -62,11 +62,8 @@
   >>>.iconfont
     font-size 12px
     margin-right 4px
-  .acticle-read
+  .acticleRead
     hover-underline-animation(0, 100%)
     font-size 14px
     margin-top 20px
     cursor pointer
-  >>>.el-card__body
-    @media (max-width: 768px)
-      padding 20px 10px

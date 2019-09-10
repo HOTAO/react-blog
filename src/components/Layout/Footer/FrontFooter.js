@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import api from '../../../api'
 import './FrontFooter.styl'
-
-export default class footer extends Component {
+import { connect } from 'react-redux'
+import { getWebConfig } from '../../../store/Reducer/webconfig'
+@connect(state => ({ baseInfo: state.webconfig.baseInfo }), { getWebConfig })
+class Footer extends Component {
   state = {
-    baseInfo: {},
     text: '',
     createdTime: '1539745193000'
   }
@@ -19,26 +19,16 @@ export default class footer extends Component {
         text: `${day}天${hour}小时${minute}分${second}秒`
       })
     }, 1000)
-    this.getWebConfig()
+    this.props.getWebConfig()
   }
 
-  getWebConfig () {
-    api.getWebConfig()
-      .then(res => {
-        console.log(res);
-        this.setState({
-          baseInfo: res[0]
-        })
-      })
-      .catch(err => console.log(err))
-  }
 
   render () {
     return (
       <div className="footerLayout">
         <div className="container footer-warp">
           <p>本站年龄:{this.state.text}</p>
-          <p>@{this.state.baseInfo.blog_name}--{this.state.baseInfo.sign}</p>
+          <p>@{this.props.baseInfo.blog_name}--{this.props.baseInfo.sign}</p>
           <p>
             本作品采用：
             <a style={{ color: '#3b74fe' }} rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>
@@ -56,3 +46,4 @@ export default class footer extends Component {
     )
   }
 }
+export default Footer

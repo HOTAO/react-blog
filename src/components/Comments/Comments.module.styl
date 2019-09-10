@@ -1,0 +1,71 @@
+.comments
+  padding 40px 0
+  .title
+    border-top 1px solid $color-main
+    padding 20px 0
+    font-style italic
+  .actions
+    .btn
+      display flex
+      justify-content space-between
+      align-items flex-end
+      z-index 10
+      button
+        &:first-child
+          background black
+          width 44px
+          height 25px
+          padding 0
+          color white
+      .active
+        border-radius 4px 4px 0 0
+        background white !important
+        color unset !important
+        border 1px solid $color-line
+        border-bottom-width 0
+    .emojis
+      width 70%
+      border 1px solid $color-line
+      padding 10px
+      margin-top -1px
+      span
+        display inline-block
+        margin-top 6px
+        margin-right 3px
+        cursor pointer
+  .list
+    padding-top 20px
+    .title
+      font-size 14px
+      color $color-main
+      font-weight bold
+      padding-bottom 10px
+      margin-bottom 10px
+      border-bottom 1px solid $color-border
+    .item
+      .commenter
+        display flex
+        align-items center
+        padding 6px 0
+      .children
+        margin-left 14px
+        border-left 2px solid $color-light-grey
+        .info
+          padding 10px 20px
+      img
+        width 32px
+        height @width
+        border-radius 50%
+        margin-right 10px
+      .name
+        color $color-mid-grey
+        margin-bottom 4px
+        button
+          margin-left 20px
+      .time
+        font-size 14px
+        color $color-light-grey
+      .content
+        padding-left 42px
+        font-size 14px
+        color $color-dark-grey
