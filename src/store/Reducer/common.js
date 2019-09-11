@@ -1,4 +1,3 @@
-import api from '../../api/index'
 
 const homeState = {
   hasArticleMenu: false,
@@ -40,8 +39,6 @@ const SET_IS_PC = 'SET_IS_PC'
 
 
 export const setIsPc = boolean => dispatch => {
-  console.log('setIsPc', boolean);
-
   dispatch(_setIsPc(boolean))
 }
 

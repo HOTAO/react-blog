@@ -28,7 +28,6 @@ class Comments extends Component {
     }
   }
 
-
   UNSAFE_componentWillMount () {
     this.getComments()
   }
@@ -97,7 +96,7 @@ class Comments extends Component {
     };
     return (
       <div className={styles.comments}>
-        <div className={styles.title}>留下你的👣（足迹）吧~</div>
+        <div className={styles.title}>留下你的<span role="img" aria-label="">👣</span> （足迹）吧~</div>
         <Form {...formItemLayout} >
           <Form.Item label="称呼">
             {getFieldDecorator('name', {
@@ -175,7 +174,7 @@ const Comment = (props) => (
     {
       (props.comment.children && props.comment.children.length > 0) ? (<div className={styles.children}>
         {
-          props.comment.children.map((child,index) => (
+          props.comment.children.map((child, index) => (
             <Comment key={index} reply={props.reply} comment={child}></Comment>
           ))
         }

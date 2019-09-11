@@ -24,7 +24,6 @@ class ArticleMenu extends Component {
     return menu.tag === this.props.articleMenuTag
   }
   isParent = menu => {
-    console.log('A:', this.props.articleMenuTag, 'B:', menu.tag);
     return this.props.articleMenuTag.indexOf(menu.tag) === 0
   }
   render () {

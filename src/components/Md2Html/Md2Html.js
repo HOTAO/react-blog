@@ -59,7 +59,7 @@ class Md2Html extends Component {
   }
   setTitleMune (titleList, tag = '') {
     let titles = []
-    titleList.map((item, index) => {
+    titleList.forEach((item, index) => {
       let len = titles.length
       if (len <= 0) {
         item.tag = `${tag}${index + 1}.`
@@ -80,10 +80,10 @@ class Md2Html extends Component {
      * 遍历上面等到的titles,遍历title.children属性，判断里面的leval时候有多个值，比如:2、3、4、5等等
      * 如果是，递归处理遍历title.children
      * */
-    titles.map(title => {
+    titles.forEach(title => {
       let children = title.children
       let levals = []
-      children.map((child, index) => {
+      children.forEach((child, index) => {
         child.tag = `${title.tag}${index + 1}.`
         if (levals.indexOf(child.leval) === -1) {
           levals.push(child.leval)

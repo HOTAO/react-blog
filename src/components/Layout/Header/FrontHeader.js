@@ -42,7 +42,7 @@ function CollapseTab (props) {
       {
         props.tabs.map(tab => (
           <Link to={tab.route} className="tab" key={tab.text}>
-            <i className="iconfont" className={`iconfont icon-${tab.icon}`}></i>
+            <i className={`iconfont icon-${tab.icon}`}></i>
             <span>{tab.text}</span>
           </Link>
         ))

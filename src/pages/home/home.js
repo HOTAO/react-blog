@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import ImageCard from '../../components/Card/ImageCard/ImageCard'
 import { getArticleData } from '../../store/Reducer/home'
 import { Pagination } from 'antd';
-import scrollToTarget from '../../utils/scroll'
 import './home.styl'
 @connect(state => ({ articleData: state.home.articleData }), { getArticleData })
 class Home extends Component {

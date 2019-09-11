@@ -64,7 +64,6 @@ class App extends Component {
   }
   // 设置可视宽度(resize回调))
   setViewWidth = (rightNavStatus) => {
-    console.log('rightNavStatus:', rightNavStatus);
     let temp = 0
     typeof rightNavStatus !== 'boolean' && (rightNavStatus = this.props.rightNavStatus)
     if (document.body.clientWidth > 768 && rightNavStatus) {

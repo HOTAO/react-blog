@@ -8,7 +8,7 @@ class Footer extends Component {
     text: '',
     createdTime: '1539745193000'
   }
-  componentWillMount () {
+  UNSAFE_componentWillMount () {
     setInterval(() => {
       let time = new Date() - this.state.createdTime
       let day = parseInt(time / 1000 / 60 / 60 / 24, 10)
