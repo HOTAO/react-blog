@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Md2Html from '../../../components/Md2Html/Md2Html'
 import Tips from '../../../components/Tips/Tips'
 import api from '../../../api'
+import Comments from '../../../components/Comments/Comments'
 import './detail.styl'
 export default class Detail extends Component {
   state = {
@@ -25,7 +26,7 @@ export default class Detail extends Component {
         {
           Object.keys(this.state.articleData.articleInfo).length > 0 ? <Md2Html html={this.state.articleData.articleInfo.html_content}></Md2Html> : <p>这篇文章因为某些原因，已下架了</p>
         }
-
+        <Comments article_id={this.props.match.params.id}></Comments>
       </div>
     )
   }

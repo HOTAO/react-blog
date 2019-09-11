@@ -16,13 +16,11 @@ export default class Classify extends Component {
   }
   getTags () {
     api.getCategory().then(res => {
-      console.log(res)
       this.setState({
         tags: res.list
       })
     })
     api.getTags().then(res => {
-      console.log(res)
       this.setState({
         categorys: res.list
       })

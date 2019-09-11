@@ -24,6 +24,7 @@ class ArticleMenu extends Component {
     return menu.tag === this.props.articleMenuTag
   }
   isParent = menu => {
+    console.log('A:', this.props.articleMenuTag, 'B:', menu.tag);
     return this.props.articleMenuTag.indexOf(menu.tag) === 0
   }
   render () {
@@ -36,7 +37,7 @@ class ArticleMenu extends Component {
                 <span onClick={() => this.toTitle(menu)} className={this.heightLight(menu) || this.isParent(menu) ? 'active' : ''}>
                   {menu.tag} {menu.text}
                 </span>
-                {this.isParent(menu) ? <ArticleMenu menu={menu.children} ></ArticleMenu> : null}
+                {this.isParent(menu) ? <ArticleMenu articleMenuTag={this.props.articleMenuTag} menus={menu.children} ></ArticleMenu> : null}
               </li>
             ))
           }

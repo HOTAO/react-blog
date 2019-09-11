@@ -35,7 +35,6 @@ class Comments extends Component {
   getComments () {
     api.getComments({ article_id: this.props.article_id })
       .then(res => {
-        console.log(res)
         this.setState({
           commentsInfo: res
         })
@@ -65,8 +64,6 @@ class Comments extends Component {
   send = () => {
     this.setAvatar()
     this.props.form.validateFields((err, values) => {
-      console.log(err, values)
-      console.log(err, values)
       if (!err) {
         const params = {
           name: values.name,

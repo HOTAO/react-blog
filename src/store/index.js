@@ -9,6 +9,6 @@ const allReducer = {
   home, webconfig, common
 }
 
-const store = createStore(combineReducers(allReducer), applyMiddleware(logger, thunk))
+const store = createStore(combineReducers(allReducer), applyMiddleware(thunk))
 
 export default store

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import SimpleCard from '../../components/Card/SimpleCard/SimpleCard'
 import api from '../../api'
+import { Pagination } from 'antd';
 import './archiving.styl'
 class Archiving extends Component {
   state = {
@@ -11,16 +12,30 @@ class Archiving extends Component {
     },
     articleData: {}
   }
-  async UNSAFE_componentWillMount () {
-    console.log(this.props);
+  UNSAFE_componentWillMount () {
+    this.getArticlesForWeb()
+  }
+  getArticlesForWeb = () => {
     api.getArticlesForWeb(this.state.params)
       .then(res => {
-        console.log(res)
         this.setState({
           articleData: res
         })
       })
       .catch(err => console.log(err))
+  }
+  pageChange = (page, pageSize) => {
+    this.setState({
+      params: {
+        status: 2,
+        page: page,
+        pageSize: pageSize
+      }
+    }, () => {
+      document.body.scrollTop = document.documentElement.scrollTop = 0
+      // scrollToTarget(0)
+      this.getArticlesForWeb()
+    })
   }
   render () {
     return (
@@ -40,6 +55,7 @@ class Archiving extends Component {
             }
           </div>
         </div>
+        <Pagination onChange={this.pageChange} defaultCurrent={1} total={this.state.articleData.count} />
       </div>
     )
   }

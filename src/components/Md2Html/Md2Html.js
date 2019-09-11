@@ -13,41 +13,49 @@ class Md2Html extends Component {
     )
   }
   componentDidMount () {
-    this.getArticleMenu()
     this.props.setArticleMenuStatus(true)
+    this.getArticleMenu()
   }
   componentWillUnmount () {
     this.props.setArticleMenuStatus(false)
   }
   // 获取articleList
-  getArticleMenu () {
+  getArticleMenu = () => {
     // 获取所有blog-head类名元素
     let nodeList = document.getElementsByClassName('blog-head')
-    let titleList = []
-    /**
-     * 循环拼接数组数据
-     * 参考：https://blog.csdn.net/qq_26847293/article/details/50833285
-     */
-    Array.prototype.map.call(nodeList, item => {
-      let leval = item.tagName.replace('H', '')
-      titleList.push({
-        id: item.id,
-        text: item.innerText,
-        leval,
-        children: []
-      })
-    })
-    let tree = this.setTitleMune(titleList)
-    let source = JSON.parse(JSON.stringify(titleList))
-    source.forEach(item => {
-      item.children = []
-    })
-    // 保存文章目录到vuex
-    this.props.setArticleMenuInfo(tree)
-    // 初始化当前高亮的文章目录，默认'1.'
-    this.props.setArticleMenuTag('1.')
-    // 保存文章标题到vuex（即：没有判断父子标题的关系）
-    this.props.setSourceArticleMenuInfo(source)
+    let inter = setInterval(() => {
+      if (nodeList.length > 0) {
+        clearInterval(inter)
+        let titleList = []
+        /**
+         * 循环拼接数组数据
+         * 参考：https://blog.csdn.net/qq_26847293/article/details/50833285
+         */
+        Array.prototype.map.call(nodeList, item => {
+          let leval = item.tagName.replace('H', '')
+          titleList.push({
+            id: item.id,
+            text: item.innerText,
+            leval,
+            children: []
+          })
+        })
+        let tree = this.setTitleMune(titleList)
+        let source = JSON.parse(JSON.stringify(titleList))
+        source.forEach(item => {
+          item.children = []
+        })
+        // 保存文章目录到vuex
+        this.props.setArticleMenuInfo(tree)
+        // 初始化当前高亮的文章目录，默认'1.'
+        this.props.setArticleMenuTag('1.')
+        // 保存文章标题到vuex（即：没有判断父子标题的关系）
+        this.props.setSourceArticleMenuInfo(source)
+      } else {
+        nodeList = document.getElementsByClassName('blog-head')
+      }
+    }, 100)
+
   }
   setTitleMune (titleList, tag = '') {
     let titles = []
